@@ -55,6 +55,9 @@ case "$IJK_NDK_REL" in
                 Darwin)
                     export IJK_MAKE_TOOLCHAIN_FLAGS="$IJK_MAKE_TOOLCHAIN_FLAGS --system=darwin-x86_64"
                 ;;
+                Linux)
+                    export IJK_MAKE_TOOLCHAIN_FLAGS="$IJK_MAKE_TOOLCHAIN_FLAGS --system=linux-x86_64"
+                ;;
                 CYGWIN_NT-*)
                     export IJK_MAKE_TOOLCHAIN_FLAGS="$IJK_MAKE_TOOLCHAIN_FLAGS --system=windows-x86_64"
                 ;;
@@ -90,6 +93,9 @@ case "$UNAME_S" in
     Darwin)
         export IJK_MAKE_FLAG=-j`sysctl -n machdep.cpu.thread_count`
     ;;
+    Linux)
+        export IJK_MAKE_FLAG=-j`nproc`
+    ;;    
     CYGWIN_NT-*)
         IJK_WIN_TEMP="$(cygpath -am /tmp)"
         export TEMPDIR=$IJK_WIN_TEMP/
